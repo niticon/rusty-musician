@@ -1,0 +1,4 @@
+I initially wanted to do the entire project in Rust but unfortunately
+the the Genius API does not provide lyrics for legal reasons
+Fortunately LyricsGenius works just fine 
+Edit the token line in get_lyrics.py to stop the recurring request for your Genius API token.
