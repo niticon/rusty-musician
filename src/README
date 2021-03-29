@@ -1,4 +1,13 @@
+Huge thank you to ______ for the python library LyricsGenius
+Another huge thank you to ______ for the rust crate python-inline
+
+the inline-python crate doesn't work with a stable version of Rust
+so I had to install nightly Rust and build with that as well
+I accidentally installed the racer crate also which turned out
+to be super helpful
+
 I initially wanted to do the entire project in Rust but unfortunately
 the the Genius API does not provide lyrics for legal reasons
 Fortunately LyricsGenius works just fine 
-Edit the token line in get_lyrics.py to stop the recurring request for your Genius API token.
+Edit the token line in python! section of the main.rs file
+to stop the recurring request for your Genius API token.

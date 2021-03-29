@@ -1,0 +1,77 @@
+[package]
+name = "rust-bert"
+version = "0.14.0"
+authors = ["Guillaume Becquin <guillaume.becquin@gmail.com>"]
+edition = "2018"
+description = "Ready-to-use NLP pipelines and transformer-based models (BERT, DistilBERT, GPT2,...)"
+repository = "https://github.com/guillaume-be/rust-bert"
+documentation = "https://docs.rs/rust-bert"
+license = "Apache-2.0"
+readme = "README.md"
+keywords = ["nlp", "deep-learning", "machine-learning", "transformers", "translation"]
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[lib]
+name = "rust_bert"
+path = "src/lib.rs"
+crate-type = ["lib"]
+
+[[bin]]
+name = "convert-tensor"
+path = "src/convert-tensor.rs"
+doc = false
+
+[[bench]]
+name = "sst2_benchmark"
+harness = false
+
+[[bench]]
+name = "squad_benchmark"
+harness = false
+
+[[bench]]
+name = "summarization_benchmark"
+harness = false
+
+[[bench]]
+name = "translation_benchmark"
+harness = false
+
+[[bench]]
+name = "generation_benchmark"
+harness = false
+
+[[bench]]
+name = "tensor_operations_benchmark"
+harness = false
+
+[profile.bench]
+opt-level = 3
+
+[features]
+doc-only = ["tch/doc-only"]
+all-tests = []
+
+[package.metadata.docs.rs]
+features = ["doc-only"]
+
+[dependencies]
+rust_tokenizers = "~6.2.1"
+tch = "~0.3.1"
+serde_json = "1.0.62"
+serde = { version = "1.0.123", features = ["derive"] }
+dirs = "3.0.1"
+itertools = "0.10.0"
+ordered-float = "2.1.1"
+cached-path = "0.5.0"
+lazy_static = "1.4.0"
+uuid = { version = "0.8.2", features = ["v4"] }
+thiserror = "1.0.24"
+
+[dev-dependencies]
+anyhow = "1.0.38"
+csv = "1.1.5"
+criterion = "0.3.4"
+torch-sys = "0.3.1"
+tempfile = "3.2.0"

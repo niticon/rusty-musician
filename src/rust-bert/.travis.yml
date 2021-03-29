@@ -1,0 +1,28 @@
+language: rust
+dist: bionic
+
+jobs:
+  include:
+    - before_script:
+      - rustup component add rustfmt
+      script:
+        - cargo fmt -- --check
+    - before_script:
+      - rustup component add clippy
+      script:
+        - cargo clippy --all-targets --all-features  -- -D warnings -A clippy::assign_op_pattern
+    - script:
+      - cargo build --verbose
+    - os:
+      - windows
+      script:
+        - cargo build --verbose
+    - script:
+      - sudo apt-get install python3-pip python3-setuptools
+      - pip3 install --upgrade pip
+      - pip3 install -r requirements.txt --progress-bar off
+      - python3 ./utils/download-dependencies_distilbert.py
+    - before_script:
+      - cargo run --example download_all_dependencies
+      script:
+        - cargo test
